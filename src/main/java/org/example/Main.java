@@ -13,15 +13,12 @@ public class Main {
     }
 
     private void run() {
-        Tree<Integer> tree = new Tree(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                if(o1 < 0 && o2 > 0) return 1;
-                if (o1 > 0 && o2 < 0) return -1;
-                if (o1 < 0) {
-                    return -Integer.compare(o1, o2);
-                }else return Integer.compare(o1, o2);
-            }
+        Tree<Integer> tree = new Tree((Comparator<Integer>) (o1, o2) -> {
+            if(o1 < 0 && o2 > 0) return 1;
+            if (o1 > 0 && o2 < 0) return -1;
+            if (o1 < 0) {
+                return -Integer.compare(o1, o2);
+            }else return Integer.compare(o1, o2);
         });
 
         loop:
